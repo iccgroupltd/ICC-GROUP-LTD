@@ -1,0 +1,85 @@
+---
+/**
+ * * These are small cards with icons, titles, and text. With title first
+ * This looks best with an even number of cards. They are smaller to
+ * use with more cards in the same section. 4 or 6 cards is probably ideal
+ *
+ * ! I copy all icons into the src/icons folder and recommend you do the same
+ * ! If the icon is at src/icons/tabler/paint.svg then you put in "tabler/paint"
+ */
+
+import { Icon } from "astro-icon/components";
+
+// components
+import FeatureCard from "@components/FeatureCard/FeatureCardSmall.astro";
+import Badge from "@components/Badge/Badge.astro";
+
+interface FeatureData {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+// data
+const featureData: FeatureData[] = [
+  {
+    icon: "tabler/clock",
+    title: "Fast Replacement Vehicles",
+    text: `We provide quick replacement vehicles to keep you on the road after a non-fault accident, minimising disruption to your life and livelihood.`,
+  },
+  {
+    icon: "tabler/star-filled",
+    title: "Support for Taxi Drivers & Private Individuals",
+    text: `Whether you're a professional taxi driver or a private individual, our service is tailored to meet your specific needs after a non-fault accident.`,
+  },
+  {
+    icon: "tabler/circle-check",
+    title: "Specialist Credit Hire Service",
+    text: `We specialise in credit hire and accident management, so you get expert support from a team that truly understands the process.`,
+  },
+  {
+    icon: "tabler/map-pin",
+    title: "Trusted Body Shop Network",
+    text: `Access our wide network of trusted body shops for quality repairs, ensuring your vehicle is restored to the highest standard.`,
+  },
+  {
+    icon: "tabler/lock-square",
+    title: "Secure Vehicle Storage",
+    text: `We arrange secure vehicle storage while your car waits for inspection, keeping it safe and protected at every stage.`,
+  },
+  {
+    icon: "tabler/bulb",
+    title: "Hassle-Free Process",
+    text: `From start to finish, we handle everything for you. A smooth, hassle-free experience so you can focus on what matters most.`,
+  },
+];
+---
+
+<section
+  id="feature-cards-small"
+  class="bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-24 md:py-28 dark:bg-[url('/assets/pattern-dark.svg')]"
+>
+  <div class="site-container relative">
+    <div class="mx-auto mb-16 text-center md:max-w-4xl" data-mos="fade-up">
+      <Badge>Why Choose Us</Badge>
+      <h2 class="h2 mb-4">6 Reasons to Use Us</h2>
+      <p class="description text-lg text-pretty md:text-xl">
+        Fast replacement vehicles to keep you on the road after a non-fault accident, with specialist support every step of the way.
+      </p>
+    </div>
+    <div id="trigger-small-cards" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        featureData.map((feature, idx) => (
+          <FeatureCard
+            title={feature.title}
+            text={feature.text}
+            icon={feature.icon}
+            data-mos="zoom-in"
+            data-mos-delay={0.15 * idx}
+            data-mos-anchor="#trigger-small-cards"
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,98 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Button from "@components/Button/Button.astro";
+import heroImage from "@assets/images/hero-taxi.jpg";
+---
+
+<section
+  id="hero-side"
+  class="mt-20 overflow-clip bg-[url('/assets/pattern-light-big.svg')] bg-center bg-no-repeat dark:bg-[url('/assets/pattern-dark-big.svg')]"
+>
+  <div class="site-container mx-auto px-4 pt-10 pb-20 md:py-28">
+    <div class="-mx-4 flex flex-wrap xl:items-center">
+      <div class="mb-16 w-full px-4 md:mb-0 md:w-1/2">
+        <div data-mos="fade-right" data-mos-anchor="#hero-side">
+          <span
+            class="bg-primary-500 mb-4 inline-flex items-center rounded-full px-3 py-1 text-xs leading-5 font-semibold tracking-wide text-white uppercase"
+          >
+            ICC Taxi Claims
+          </span>
+
+          <h1
+            class="text-base-900 dark:text-base-100 mb-6 text-3xl leading-tight font-bold tracking-tight text-pretty lg:text-5xl lg:leading-tight"
+          >
+            Keeping You Moving After a Non-Fault Accident
+          </h1>
+        </div>
+        <p
+          class="description mb-8 text-lg text-pretty lg:text-xl"
+          data-mos="fade-right"
+          data-mos-delay=".1"
+          data-mos-anchor="#hero-side"
+        >
+          At ICC TAXI CLAIMS, we provide reliable credit hire vehicles for private individuals and
+          taxi drivers while their vehicle is off the road. From replacement vehicles to repairs and
+          storage, we handle the details so you can stay focused on what matters most.
+        </p>
+        <div
+          class="mt-6 flex flex-wrap gap-4"
+          data-mos="fade-right"
+          data-mos-delay=".2"
+          data-mos-anchor="#hero-side"
+        >
+          <Button variant="primary" href="/contact" arrow="right">
+            Get a Replacement Vehicle
+          </Button>
+          <Button variant="outline" href="/services"> Our Services </Button>
+        </div>
+
+        <div
+          class="mt-8 mr-auto flex max-w-md items-center gap-3"
+          data-mos="fade-right"
+          data-mos-delay=".3"
+          data-mos-anchor="#hero-side"
+        >
+          <div class="flex items-center gap-1">
+            <Icon name="tabler/star-filled" class="size-5 text-yellow-400" />
+            <Icon name="tabler/star-filled" class="size-5 text-yellow-400" />
+            <Icon name="tabler/star-filled" class="size-5 text-yellow-400" />
+            <Icon name="tabler/star-filled" class="size-5 text-yellow-400" />
+            <Icon name="tabler/star-filled" class="size-5 text-yellow-400" />
+          </div>
+          <p class="description text-sm leading-tight tracking-tight">
+            Trusted by 500+ taxi drivers &amp; private individuals across the UK.
+          </p>
+        </div>
+      </div>
+      <div class="w-full px-4 md:w-1/2">
+        <div
+          class="relative mx-auto max-w-max md:mr-0"
+          data-mos="fade-left"
+          data-mos-anchor="#hero-side"
+        >
+          <Icon
+            name="atlas/circle3"
+            class="text-primary-500 absolute -top-12 -left-14 z-10 aspect-square h-auto w-28"
+            aria-hidden="true"
+          />
+          <Icon
+            name="atlas/dots3"
+            class="text-accent-2 absolute -right-7 -bottom-8 z-10 aspect-[149/91] h-auto w-28"
+            aria-hidden="true"
+          />
+          <div class="rounded-7xl relative overflow-hidden rounded-2xl">
+            <Image
+              src={heroImage}
+              class="h-auto min-w-full object-cover"
+              alt="Silver Volkswagen Sharan MPV driving through urban street"
+              loading="eager"
+              width={600}
+              densities={[1.5, 2]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

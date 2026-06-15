@@ -1,0 +1,70 @@
+---
+/**
+ * * These are medium cards with icons, titles, and text. With title first
+ * This looks best with 3 or 6 cards
+ *
+ * ! I copy all icons into the src/icons folder and recommend you do the same
+ * ! If the icon is at src/icons/tabler/paint.svg then you put in "tabler/paint"
+ */
+
+// components
+import FeatureCard from "@components/FeatureCard/FeatureCardMedium.astro";
+
+interface FeatureData {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+// data
+const featureData: FeatureData[] = [
+  {
+    icon: "tabler/clock",
+    title: "Same-day vehicle delivery",
+    text: `We understand that every day without a vehicle costs you money. That's why we aim to get you a replacement vehicle on the same day as your claim.`,
+  },
+  {
+    icon: "tabler/circle-check",
+    title: "No cost to you",
+    text: `All charges are recovered directly from the at-fault party's insurer. You pay nothing upfront and nothing at the end. `,
+  },
+  {
+    icon: "tabler/phone",
+    title: "Dedicated support",
+    text: `From your first call to the return of the hire vehicle, you'll have a single point of contact who knows your case inside out.`,
+  },
+  // {
+  //   icon: "tabler/list-check",
+  //   title: "Customer satisfaction",
+  //   text: `We prioritize customer satisfaction and work closely with our clients to ensure that
+  //     their vision is brought to life.`,
+  // },
+  // {
+  //   icon: "tabler/home-heart",
+  //   title: "Durability",
+  //   text: `We use high-quality materials and techniques to ensure that our paint jobs are
+  //     durable and long-lasting.`,
+  // },
+  // {
+  //   icon: "tabler/wand",
+  //   title: "Beautiful results",
+  //   text: `Our team of skilled painters has an eye for detail and a passion for creating
+  //     beautiful spaces. We create stunning results that leave our clients thrilled.`,
+  // },
+];
+---
+
+<section
+  id="feature-cards-medium"
+  class="overflow-hidden bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-12 md:py-20 dark:bg-[url('/assets/pattern-dark.svg')]"
+>
+  <div class="site-container">
+    <div id="trigger-medium-cards" class="grid gap-4 md:grid-cols-3" data-mos="fade-left">
+      {
+        featureData.map((feature, idx) => (
+          <FeatureCard title={feature.title} text={feature.text} icon={feature.icon} />
+        ))
+      }
+    </div>
+  </div>
+</section>

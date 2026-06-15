@@ -1,0 +1,84 @@
+---
+/**
+ * * These are alternating side cards with titles, text, and images
+ * Recommend using 2 or 3 cards in a row
+ */
+import { Icon } from "astro-icon/components";
+
+// components
+import ServiceCard from "@components/ServiceCard/ServiceCardSideImage.astro";
+import Badge from "@components/Badge/Badge.astro";
+
+// images
+import image1 from "@images/service-credit-hire.jpg";
+import image2 from "@images/service-body-shop.jpg";
+import image3 from "@images/service-storage.jpg";
+
+interface ServiceItem {
+  image: ImageMetadata; // an imported image
+  title: string;
+  details: string;
+  href: string; // link to learn more
+  hideButton?: boolean; // if true, don't show the "Learn more" button
+  buttonLabel?: string; // custom button text
+}
+
+// data
+const serviceData: ServiceItem[] = [
+  {
+    image: image1,
+    title: "Credit Hire Vehicles",
+    details: `We provide a like-for-like replacement vehicle on a credit hire basis after a non-fault accident, so you can stay on the road while yours is being repaired. Our fleet includes Toyota Prius, Toyota Corolla, Mercedes E-Class, 9-seater Mercedes Vito, and 7-seater Volkswagen Sharan — covering everything from private cars to people carriers.
+
+There are no upfront costs to you. We recover all charges directly from the at-fault party's insurer, handling the entire claims process so you don't have to. Whether you're a taxi driver who can't afford to lose a day's earnings or a private individual who needs their car for daily life, we ensure you're back on the road as quickly as possible.`,
+    href: "/fleet",
+    buttonLabel: "Learn about our vehicles",
+  },
+  {
+    image: image2,
+    title: "Vehicle Repairs",
+    details: `Through our trusted network of approved body shops, we arrange high-quality repairs for your vehicle after an accident. From minor scratches and dents to major structural damage, our approved repairers ensure your car is restored to its pre-accident condition.
+
+We manage the entire repair process on your behalf — from the initial assessment through to completion. This includes coordinating with the at-fault party's insurer, arranging any necessary parts, and keeping you informed at every stage. All repairs come with a guarantee for your complete peace of mind.`,
+    href: "/services/vehicle-repairs/",
+    hideButton: true,
+  },
+  {
+    image: image3,
+    title: "Secure Vehicle Storage",
+    details: `If your vehicle cannot be driven after an accident, we arrange secure storage in monitored, professional facilities while it awaits inspection or repair. This ensures your vehicle is protected from further damage, weather, and theft during a vulnerable time.
+
+Storage costs are recovered from the at-fault party's insurer, so there's no cost to you. We also coordinate the transfer of your vehicle from storage to the repair shop when the time comes, removing one more hassle from your plate.`,
+    href: "/services/vehicle-storage/",
+    hideButton: true,
+  },
+];
+---
+
+<section id="services-side-image" class="overflow-hidden py-24 md:py-28">
+  <div class="site-container">
+    <div class="mx-auto mb-16 text-center md:mb-20 md:max-w-4xl" data-mos="fade-up">
+      <Badge>Our Services</Badge>
+      <h2 class="h2 mb-4">3 Services We Offer</h2>
+      <p class="description text-lg md:text-xl">
+        From credit hire vehicles to repairs and secure storage, we handle everything after your non-fault accident.
+      </p>
+    </div>
+    <div class="flex flex-col gap-16 md:mt-16 md:gap-24">
+      {
+        serviceData.map((feature, idx) => (
+          <ServiceCard
+            title={feature.title}
+            details={feature.details}
+            image={feature.image}
+            imageSide={idx % 2 === 0 ? "right" : "left"}
+            href={feature.href}
+            idx={idx}
+            hideButton={feature.hideButton}
+            buttonLabel={feature.buttonLabel}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

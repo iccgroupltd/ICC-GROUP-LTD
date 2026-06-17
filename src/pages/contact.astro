@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 // main layout
@@ -11,71 +12,94 @@ import ContactForm from "@components/Forms/ContactForm.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
 
+// assets
+import contactOffice from "@assets/images/contact-office.jpg";
+
 // data
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
 ---
 
-<BaseLayout title="Contact Me" description="Get in touch! Contact us using this page.">
-  <div class="site-container mx-auto mt-16 overflow-x-clip">
-    <div
-      class="w-full bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-20 text-center md:py-32 dark:bg-[url('/assets/pattern-dark.svg')]"
-    >
-      <h1 class="h1">Contact Us</h1>
-      <p class="description mx-auto mt-6 max-w-2xl">
-        When you fill out the form below, we will contact you to set up a time and take a look at
-        your project. We look forward to meeting you!
-      </p>
-    </div>
-
-    <div class="grid gap-8 lg:grid-cols-2">
-      <!-- contact form -->
-      <div class="mb-12 lg:order-2">
-        <ContactForm />
+<BaseLayout
+  title="Contact Us | ICC Taxi Claims"
+  description="Get in touch with ICC Taxi Claims for credit hire vehicles, repairs, and vehicle storage after a non-fault accident."
+>
+  <div class="site-container mx-auto mt-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
+      <!-- Image + contact info card -->
+      <div
+        class="relative mb-8 min-h-[520px] overflow-hidden rounded-2xl lg:mb-0"
+        data-mos="fade-up"
+      >
+        <Image
+          src={contactOffice}
+          alt="ICC Taxi Claims office"
+          class="absolute inset-0 size-full object-cover"
+          width={1000}
+          densities={[1.5, 2]}
+        />
+        <!-- gradient overlay for readability -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-primary-900/70 via-primary-900/15 to-primary-900/75"
+        >
+        </div>
+        <h1
+          class="absolute left-6 top-8 text-4xl font-bold text-white lg:left-8 lg:top-10"
+          >Contact us</h1
+        >
+        <div class="absolute inset-x-0 bottom-0 p-5 lg:p-8">
+          <div class="rounded-lg bg-white p-6 dark:bg-base-800">
+            <a
+              href={`tel:${siteData.contact.phone}`}
+              class="mb-5 flex items-center gap-4"
+            >
+              <Icon name="tabler/phone" class="size-6 shrink-0 text-primary-500" />
+              <span
+                class="text-base font-medium text-base-900 dark:text-base-100"
+                >{siteData.contact.phone}</span
+              >
+            </a>
+            <a
+              href={`mailto:${siteData.contact.email}`}
+              class="mb-5 flex items-center gap-4"
+            >
+              <Icon name="tabler/mail" class="size-6 shrink-0 text-primary-500" />
+              <span
+                class="text-base font-medium text-base-900 dark:text-base-100"
+                >{siteData.contact.email}</span
+              >
+            </a>
+            <div class="flex items-center gap-4">
+              <Icon
+                name="tabler/map-pin"
+                class="size-6 shrink-0 text-primary-500"
+              />
+              <div
+                class="text-base font-medium leading-6 text-base-900 dark:text-base-100"
+              >
+                <p>{siteData.contact.address1}</p>
+                <p>{siteData.contact.address2}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Contact info -->
-      <div class="mb-auto grid gap-x-6 gap-y-12 lg:grid-cols-2">
-        <!-- Email -->
-        <div class="flex flex-col items-center gap-3 lg:items-start">
-          <div
-            class="bg-primary-500 inline-flex size-12 items-center justify-center overflow-hidden rounded-full"
-          >
-            <Icon name="tabler/mail" class="size-6 text-white" />
-          </div>
-          <h3 class="h3">Email</h3>
-          <a href="mailto:example@email.com" class="description hover:text-base-800 transition"
-            >{siteData.contact.email}</a
-          >
-        </div>
-
-        <!-- Phone -->
-        <div class="flex flex-col items-center gap-3 lg:items-start">
-          <div
-            class="bg-primary-500 inline-flex size-12 items-center justify-center overflow-hidden rounded-full"
-          >
-            <Icon name="tabler/phone" class="size-6 text-white" />
-          </div>
-          <h3 class="h3">Phone</h3>
-          <a
-            href={`tel:${siteData.contact.phone}`}
-            class="description hover:text-base-800 transition">{siteData.contact.phone}</a
-          >
-        </div>
-
-        <!-- Address -->
-        <div class="flex flex-col items-center gap-3 lg:items-start">
-          <div
-            class="bg-primary-500 inline-flex size-12 items-center justify-center overflow-hidden rounded-full"
-          >
-            <Icon name="tabler/map-pin" class="size-6 text-white" />
-          </div>
-          <h3 class="h3">Office</h3>
-          <div class="description flex flex-col items-center lg:items-start">
-            <p>{siteData.contact.address1}</p>
-            <p>{siteData.contact.address2}</p>
-          </div>
-        </div>
+      <!-- Form -->
+      <div
+        class="rounded-2xl bg-base-50 p-5 dark:bg-base-900 lg:p-11"
+        data-mos="fade-up"
+      >
+        <h2
+          class="mb-4 text-3xl font-semibold text-primary-600 dark:text-primary-400 lg:text-4xl lg:leading-tight"
+        >
+          Send Us A Message
+        </h2>
+        <p class="description mb-8 max-w-md">
+          Been involved in a non-fault accident? Fill out the form below and we'll get you a
+          replacement vehicle and handle your claim from start to finish.
+        </p>
+        <ContactForm />
       </div>
     </div>
   </div>

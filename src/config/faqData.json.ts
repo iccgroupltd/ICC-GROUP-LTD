@@ -3,7 +3,7 @@ import { type FaqItem } from "./types/configDataTypes";
 export const faqData: FaqItem[] = [
   {
     question: "What is credit hire?",
-    answer: `Credit hire is a service that provides you with a replacement vehicle after a non-fault accident. The cost is recovered directly from the at-fault party's insurer, so you pay nothing upfront.`,
+    answer: `Credit hire is a service that provides you with a replacement vehicle after a non-fault accident. The vehicle is provided on a credit basis and the cost is recovered directly from the at-fault party's insurer. If the insurer does not settle, you may be liable for the hire charges.`,
   },
   {
     question: "Do I qualify for a replacement vehicle?",

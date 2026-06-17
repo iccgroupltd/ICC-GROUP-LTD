@@ -1,53 +1,243 @@
 ---
-/**
- * * About page with various sections including some text, team profiles, and CTA
- * Edit the team member information inside src/config/teamData.json.ts
- */
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
-// main layout
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-// components
-import Profile from "@components/Profile/Profile.astro";
+import Badge from "@components/Badge/Badge.astro";
 import Button from "@components/Button/Button.astro";
 import CtaCardSplit from "@components/Cta/CtaCardSplit.astro";
-import Badge from "@components/Badge/Badge.astro";
+import FeatureCard from "@components/FeatureCard/FeatureCardSmall.astro";
 
-// utils
-import { getLocaleFromUrl } from "@js/localeUtils";
-import { getTranslatedData, getLocalizedRoute } from "@js/translationUtils";
+import serviceCreditHire from "@assets/images/service-credit-hire.jpg";
+import serviceBodyShop from "@assets/images/service-body-shop.jpg";
+import serviceStorage from "@assets/images/service-storage.jpg";
 
-// data
-const currLocale = getLocaleFromUrl(Astro.url);
-const teamData = getTranslatedData("teamData", currLocale);
+interface FeatureData {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+interface WhatWeDoItem {
+  image: ImageMetadata;
+  title: string;
+  text: string;
+  icon: string;
+}
+
+const whatWeDo: WhatWeDoItem[] = [
+  {
+    image: serviceCreditHire,
+    title: "Credit Hire Vehicles",
+    text: "We provide replacement vehicles for private motorists and licensed taxi drivers who need a vehicle while their own is off the road after a non-fault accident. Our aim is to make sure you are never left without transport while the insurance claim is being settled.",
+    icon: "tabler/car",
+  },
+  {
+    image: serviceBodyShop,
+    title: "Vehicle Repairs",
+    text: "We arrange vehicle repairs through a wide network of trusted body shops, ensuring repairs are carried out efficiently and to a high standard. We coordinate the entire process so your vehicle is restored to its pre-accident condition.",
+    icon: "tabler/pencil",
+  },
+  {
+    image: serviceStorage,
+    title: "Secure Vehicle Storage",
+    text: "If your vehicle needs to be held safely before inspection, we arrange secure storage to protect it while the claims process moves forward. Your vehicle stays safe and monitored at every stage.",
+    icon: "tabler/lock-square",
+  },
+];
+
+const whyChooseUs: FeatureData[] = [
+  {
+    icon: "tabler/clock",
+    title: "Speed",
+    text: "We understand the pressure that comes with an accident, especially for taxi drivers who rely on their vehicle to earn a living. Our service is built around speed so you are back on the road as quickly as possible.",
+  },
+  {
+    icon: "tabler/phone",
+    title: "Support",
+    text: "From first contact through to vehicle replacement and repair, our team is here to support you every step of the way. We keep you informed throughout the entire process.",
+  },
+  {
+    icon: "tabler/list-check",
+    title: "Convenience",
+    text: "Our team works to provide a straightforward experience, coordinating replacement vehicles, repairs, and storage where needed — so you can focus on getting back to normal.",
+  },
+  {
+    icon: "tabler/circle-check",
+    title: "Specialist Expertise",
+    text: "We specialise in credit hire and accident management. You get expert support from a team that truly understands the claims process for both private individuals and professional drivers.",
+  },
+  {
+    icon: "tabler/pencil",
+    title: "Tailored Service",
+    text: "Every case is different, so we tailor our service to the needs of each customer. Whether you are a private individual or a professional driver, we adapt to your situation.",
+  },
+  {
+    icon: "tabler/mail",
+    title: "Reliable Communication",
+    text: "We are committed to delivering reliable support, clear communication, and practical solutions when you need them most. No jargon, no confusion — just honest, straightforward help.",
+  },
+];
 ---
 
-<BaseLayout title="About Us" description="All about our super awesome small business team!">
-  <!-- text section -->
+<BaseLayout
+  title="About Us | ICC Taxi Claims"
+  description="ICC TAXI CLAIMS provides specialist credit hire and accident management services for private individuals and taxi drivers involved in non-fault accidents. Keeping you on the road since day one."
+>
+  <!-- Intro section -->
   <section
-    class="site-container mx-auto mt-16 bg-[url('/assets/pattern-light-big.svg')] bg-center bg-no-repeat py-24 dark:bg-[url('/assets/pattern-dark-big.svg')]"
+    id="about-intro"
+    class="mt-20 bg-[url('/assets/pattern-light-big.svg')] bg-center bg-no-repeat py-24 dark:bg-[url('/assets/pattern-dark-big.svg')] md:py-28"
   >
-    <div class="mb-16 text-center">
-      <Badge>Team</Badge>
-      <h1 class="h1 mb-4">Our team is the best in the business.</h1>
-      <p class="description mb-8 text-lg md:text-xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptate molestias fugit.
-      </p>
-      <div class="flex justify-center">
-        <Button variant="primary" href={"/contact"}>
-          Contact Us
-        </Button>
+    <div class="site-container mx-auto max-w-4xl">
+      <div class="text-center" data-mos="fade-up" data-mos-anchor="#about-intro">
+        <Badge>About Us</Badge>
+        <h1 class="h1 mb-6">Keeping Drivers Moving After a Non-Fault Accident</h1>
+        <p class="description text-lg text-pretty md:text-xl">
+          At ICC TAXI CLAIMS, we specialise in helping private individuals and taxi drivers get back
+          on the road after a non-fault accident. We understand that when your vehicle is damaged, the
+          disruption goes beyond transport — it can affect your work, income, and daily routine.
+        </p>
+        <p class="description mt-4 text-lg text-pretty md:text-xl">
+          That is why we provide a complete credit hire and accident management service designed to
+          reduce stress and keep you moving. From supplying replacement vehicles to arranging repairs
+          and vehicle storage, our team handles the process from start to finish.
+        </p>
       </div>
     </div>
+  </section>
 
-    <!-- Team info -->
-    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        teamData.map((member) => (
-          <Profile name={member.name} title={member.title} image={member.image} bio={member.bio} />
-        ))
-      }
+  <!-- What We Do -->
+  <section id="about-what-we-do" class="bg-base-50 py-24 dark:bg-base-900 md:py-28">
+    <div class="site-container">
+      <div class="mx-auto mb-16 text-center md:max-w-4xl" data-mos="fade-up">
+        <Badge>What We Do</Badge>
+        <h2 class="h2 mb-4">A Complete Accident Management Service</h2>
+        <p class="description text-lg text-pretty md:text-xl">
+          We supply replacement vehicles to keep you on the road while your claim is being processed,
+          and we take care of the details that follow an accident.
+        </p>
+      </div>
+      <div id="trigger-about-cards" class="grid gap-6 md:grid-cols-3">
+        {
+          whatWeDo.map((item, idx) => (
+            <div
+              class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-base-800"
+              data-mos="zoom-in"
+              data-mos-delay={0.15 * idx}
+              data-mos-anchor="#trigger-about-cards"
+            >
+              <div class="aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  class="h-full w-full object-cover"
+                  width={500}
+                  densities={[1.5, 2]}
+                />
+              </div>
+              <div class="p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <Icon name={item.icon} class="text-primary-500 size-6" aria-hidden="true" />
+                  <h3 class="text-lg font-bold">{item.title}</h3>
+                </div>
+                <p class="description">{item.text}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section
+    id="about-why-choose"
+    class="bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-24 dark:bg-[url('/assets/pattern-dark.svg')] md:py-28"
+  >
+    <div class="site-container">
+      <div class="mx-auto mb-16 text-center md:max-w-4xl" data-mos="fade-up">
+        <Badge>Why Choose Us</Badge>
+        <h2 class="h2 mb-4">Built Around Speed, Support &amp; Convenience</h2>
+        <p class="description text-lg text-pretty md:text-xl">
+          We understand the pressure that comes with an accident. Our service is designed to take the
+          pressure off you and keep you moving.
+        </p>
+      </div>
+      <div id="trigger-why-cards" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          whyChooseUs.map((feature, idx) => (
+            <FeatureCard
+              title={feature.title}
+              text={feature.text}
+              icon={feature.icon}
+              data-mos="zoom-in"
+              data-mos-delay={0.15 * idx}
+              data-mos-anchor="#trigger-why-cards"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise -->
+  <section id="about-promise" class="py-24 md:py-28">
+    <div class="site-container mx-auto max-w-4xl">
+      <div class="text-center" data-mos="fade-up">
+        <Badge>Our Promise</Badge>
+        <h2 class="h2 mb-6">Reliable Support When You Need It Most</h2>
+        <p class="description text-lg text-pretty md:text-xl">
+          ICC TAXI CLAIMS is committed to delivering reliable support, clear communication, and
+          practical solutions when you need them most. We know that every case is different, so we
+          tailor our service to the needs of each customer and keep you informed throughout.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-3">
+        <div
+          class="rounded-2xl bg-base-50 p-6 text-center dark:bg-base-900"
+          data-mos="fade-up"
+          data-mos-delay="0"
+          data-mos-anchor="#about-promise"
+        >
+          <Icon name="tabler/flame" class="text-primary-500 mx-auto mb-3 size-8" aria-hidden="true" />
+          <h3 class="mb-2 text-lg font-bold">Fast Response</h3>
+          <p class="description text-sm">
+            We act quickly to get you a replacement vehicle and start the claims process without delay.
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-base-50 p-6 text-center dark:bg-base-900"
+          data-mos="fade-up"
+          data-mos-delay=".15"
+          data-mos-anchor="#about-promise"
+        >
+          <Icon name="tabler/mail" class="text-primary-500 mx-auto mb-3 size-8" aria-hidden="true" />
+          <h3 class="mb-2 text-lg font-bold">Clear Communication</h3>
+          <p class="description text-sm">
+            We keep you informed at every stage, with honest updates and no confusing jargon.
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-base-50 p-6 text-center dark:bg-base-900"
+          data-mos="fade-up"
+          data-mos-delay=".3"
+          data-mos-anchor="#about-promise"
+        >
+          <Icon name="tabler/bulb" class="text-primary-500 mx-auto mb-3 size-8" aria-hidden="true" />
+          <h3 class="mb-2 text-lg font-bold">Tailored Solutions</h3>
+          <p class="description text-sm">
+            Every case is different. We adapt our service to fit your specific situation and needs.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center" data-mos="fade-up">
+        <Button variant="primary" href="/contact" arrow="right">
+          Get a Replacement Vehicle
+        </Button>
+      </div>
     </div>
   </section>
 

@@ -19,7 +19,9 @@ const today = new Date();
 <footer class="text-base-500 overflow-x-clip pt-20 pb-16 font-medium">
   <div class="site-container">
     <div class="mt-6 flex flex-wrap items-center justify-between gap-6">
-      <SiteLogo />
+      <div class="flex h-14 items-center" data-nav-logo>
+        <SiteLogo />
+      </div>
       <div class="flex flex-wrap gap-x-4">
         <FooterLink href={"/about"}>About</FooterLink>
         <FooterLink href={"/fleet"}>Our Fleet</FooterLink>

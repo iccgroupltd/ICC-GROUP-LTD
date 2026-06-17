@@ -1,29 +1,21 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
+import Logo from "../../icons/logo.svg";
 
 // utils
 import { getLocaleFromUrl } from "@js/localeUtils";
-import { getTranslatedData, getLocalizedRoute } from "@js/translationUtils";
+import { getTranslatedData } from "@js/translationUtils";
 
 // data
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
-
-// images
-import logo from "@images/atlas-logo.png";
 ---
 
 <a
   class="primary-focus text-base-800 dark:text-base-200 flex items-center gap-2 align-middle text-xl font-bold"
   href={"/"}
 >
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" class="text-primary-500 size-8" aria-hidden="true">
-    <path d="M0 0h24v24H0z" fill="none" />
-    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0" />
-      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 1 0-4 0m2 2v7m-2-9l-6.75-2M14 12l6.75-2" />
-    </g>
-  </svg>
-  <p class="">{siteData.name}</p>
+  <Logo class="h-auto w-12 flex-shrink-0" />
+  <p class="text-primary flex-shrink-0 -translate-x-4.5 translate-y-2.5 uppercase">
+    {siteData.name}
+  </p>
 </a>

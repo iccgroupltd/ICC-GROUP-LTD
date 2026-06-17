@@ -161,3 +161,9 @@
 		animation-play-state: paused !important;
 	}
 }
+
+/* unlayered so it beats @tailwindcss/forms' ::placeholder rule */
+input::placeholder,
+textarea::placeholder {
+	opacity: 0.9;
+}

@@ -7,9 +7,9 @@ const siteData: SiteDataProps = {
     "At ICC TAXI CLAIMS, we provide reliable credit hire vehicles for private individuals and taxi drivers while their vehicle is off the road. Replacement vehicles, repairs, and storage handled for you.",
 
   contact: {
-    address1: "1234 Main Street",
-    address2: "London, UK",
-    phone: "(123) 456-7890",
+    address1: "ICC Group Ltd, Unit 4 Halliwell Mill",
+    address2: "Raglan Street, Bolton, BL1 8GR",
+    phone: "0161 975 2359",
     email: "info@icctaxiclaims.co.uk",
   },
 

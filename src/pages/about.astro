@@ -87,7 +87,7 @@ const whyChooseUs: FeatureData[] = [
   <!-- Intro section -->
   <section
     id="about-intro"
-    class="mt-20 bg-[url('/assets/pattern-light-big.svg')] bg-center bg-no-repeat py-24 dark:bg-[url('/assets/pattern-dark-big.svg')] md:py-28"
+    class="mt-20 bg-[url('/assets/pattern-light-big.svg')] bg-center bg-no-repeat py-24 md:py-28 dark:bg-[url('/assets/pattern-dark-big.svg')]"
   >
     <div class="site-container mx-auto max-w-4xl">
       <div class="text-center" data-mos="fade-up" data-mos-anchor="#about-intro">
@@ -95,34 +95,34 @@ const whyChooseUs: FeatureData[] = [
         <h1 class="h1 mb-6">Keeping Drivers Moving After a Non-Fault Accident</h1>
         <p class="description text-lg text-pretty md:text-xl">
           At ICC TAXI CLAIMS, we specialise in helping private individuals and taxi drivers get back
-          on the road after a non-fault accident. We understand that when your vehicle is damaged, the
-          disruption goes beyond transport — it can affect your work, income, and daily routine.
+          on the road after a non-fault accident. We understand that when your vehicle is damaged,
+          the disruption goes beyond transport — it can affect your work, income, and daily routine.
         </p>
         <p class="description mt-4 text-lg text-pretty md:text-xl">
           That is why we provide a complete credit hire and accident management service designed to
-          reduce stress and keep you moving. From supplying replacement vehicles to arranging repairs
-          and vehicle storage, our team handles the process from start to finish.
+          reduce stress and keep you moving. From supplying replacement vehicles to arranging
+          repairs and vehicle storage, our team handles the process from start to finish.
         </p>
       </div>
     </div>
   </section>
 
   <!-- What We Do -->
-  <section id="about-what-we-do" class="bg-base-50 py-24 dark:bg-base-900 md:py-28">
+  <section id="about-what-we-do" class="bg-base-50 dark:bg-base-900 py-24 md:py-28">
     <div class="site-container">
       <div class="mx-auto mb-16 text-center md:max-w-4xl" data-mos="fade-up">
         <Badge>What We Do</Badge>
         <h2 class="h2 mb-4">A Complete Accident Management Service</h2>
         <p class="description text-lg text-pretty md:text-xl">
-          We supply replacement vehicles to keep you on the road while your claim is being processed,
-          and we take care of the details that follow an accident.
+          We supply replacement vehicles to keep you on the road while your claim is being
+          processed, and we take care of the details that follow an accident.
         </p>
       </div>
       <div id="trigger-about-cards" class="grid gap-6 md:grid-cols-3">
         {
           whatWeDo.map((item, idx) => (
             <div
-              class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-base-800"
+              class="dark:bg-base-800 overflow-hidden rounded-2xl bg-white shadow-sm"
               data-mos="zoom-in"
               data-mos-delay={0.15 * idx}
               data-mos-anchor="#trigger-about-cards"
@@ -153,15 +153,15 @@ const whyChooseUs: FeatureData[] = [
   <!-- Why Choose Us -->
   <section
     id="about-why-choose"
-    class="bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-24 dark:bg-[url('/assets/pattern-dark.svg')] md:py-28"
+    class="bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-24 md:py-28 dark:bg-[url('/assets/pattern-dark.svg')]"
   >
     <div class="site-container">
       <div class="mx-auto mb-16 text-center md:max-w-4xl" data-mos="fade-up">
         <Badge>Why Choose Us</Badge>
         <h2 class="h2 mb-4">Built Around Speed, Support &amp; Convenience</h2>
         <p class="description text-lg text-pretty md:text-xl">
-          We understand the pressure that comes with an accident. Our service is designed to take the
-          pressure off you and keep you moving.
+          We understand the pressure that comes with an accident. Our service is designed to take
+          the pressure off you and keep you moving.
         </p>
       </div>
       <div id="trigger-why-cards" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -182,7 +182,7 @@ const whyChooseUs: FeatureData[] = [
   </section>
 
   <!-- Our Promise -->
-  <section id="about-promise" class="py-24 md:py-28">
+  <section id="about-promise" class="py-12 md:py-28">
     <div class="site-container mx-auto max-w-4xl">
       <div class="text-center" data-mos="fade-up">
         <Badge>Our Promise</Badge>
@@ -196,36 +196,49 @@ const whyChooseUs: FeatureData[] = [
 
       <div class="mt-12 grid gap-6 sm:grid-cols-3">
         <div
-          class="rounded-2xl bg-base-50 p-6 text-center dark:bg-base-900"
+          class="bg-base-50 dark:bg-base-900 rounded-2xl p-6 text-center"
           data-mos="fade-up"
           data-mos-delay="0"
           data-mos-anchor="#about-promise"
         >
-          <Icon name="tabler/flame" class="text-primary-500 mx-auto mb-3 size-8" aria-hidden="true" />
+          <Icon
+            name="tabler/flame"
+            class="text-primary-500 mx-auto mb-3 size-8"
+            aria-hidden="true"
+          />
           <h3 class="mb-2 text-lg font-bold">Fast Response</h3>
           <p class="description text-sm">
-            We act quickly to get you a replacement vehicle and start the claims process without delay.
+            We act quickly to get you a replacement vehicle and start the claims process without
+            delay.
           </p>
         </div>
         <div
-          class="rounded-2xl bg-base-50 p-6 text-center dark:bg-base-900"
+          class="bg-base-50 dark:bg-base-900 rounded-2xl p-6 text-center"
           data-mos="fade-up"
           data-mos-delay=".15"
           data-mos-anchor="#about-promise"
         >
-          <Icon name="tabler/mail" class="text-primary-500 mx-auto mb-3 size-8" aria-hidden="true" />
+          <Icon
+            name="tabler/mail"
+            class="text-primary-500 mx-auto mb-3 size-8"
+            aria-hidden="true"
+          />
           <h3 class="mb-2 text-lg font-bold">Clear Communication</h3>
           <p class="description text-sm">
             We keep you informed at every stage, with honest updates and no confusing jargon.
           </p>
         </div>
         <div
-          class="rounded-2xl bg-base-50 p-6 text-center dark:bg-base-900"
+          class="bg-base-50 dark:bg-base-900 rounded-2xl p-6 text-center"
           data-mos="fade-up"
           data-mos-delay=".3"
           data-mos-anchor="#about-promise"
         >
-          <Icon name="tabler/bulb" class="text-primary-500 mx-auto mb-3 size-8" aria-hidden="true" />
+          <Icon
+            name="tabler/bulb"
+            class="text-primary-500 mx-auto mb-3 size-8"
+            aria-hidden="true"
+          />
           <h3 class="mb-2 text-lg font-bold">Tailored Solutions</h3>
           <p class="description text-sm">
             Every case is different. We adapt our service to fit your specific situation and needs.
@@ -234,9 +247,7 @@ const whyChooseUs: FeatureData[] = [
       </div>
 
       <div class="mt-12 text-center" data-mos="fade-up">
-        <Button variant="primary" href="/contact" arrow="right">
-          Get a Replacement Vehicle
-        </Button>
+        <Button variant="primary" href="/contact" arrow="right"> Get a Replacement Vehicle </Button>
       </div>
     </div>
   </section>

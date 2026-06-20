@@ -4,36 +4,53 @@ import PageHeader from "@components/PageHeader/PageHeader.astro";
 import Badge from "@components/Badge/Badge.astro";
 import CtaCardSplit from "@components/Cta/CtaCardSplit.astro";
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import heroImage from "@assets/images/hero-taxi.jpg";
+
+const heroBg = await getImage({
+  src: heroImage,
+  format: "webp",
+  widths: [2400],
+  quality: "high",
+});
 import fleetTaxi from "@assets/images/fleet-taxi.jpg";
 import fleetPrivate from "@assets/images/fleet-private.jpg";
 import fleetExotic from "@assets/images/fleet-exotic.jpg";
 ---
 
-<BaseLayout title="Our Fleet | ICC Taxi Claims" description="Explore ICC Taxi Claims' full fleet — taxi, private car, and exotic hire vehicles. Toyota Prius, Mercedes E-Class, Audi A3, Porsche Cayenne, Aston Martin DBX and more." navDark={true}>
-  <PageHeader title="Our Fleet" highlight="Fleet" />
+<BaseLayout
+  title="Our Fleet | ICC Taxi Claims"
+  description="Explore ICC Taxi Claims' full fleet — taxi, private car, and exotic hire vehicles. Toyota Prius, Mercedes E-Class, Audi A3, Porsche Cayenne, Aston Martin DBX and more."
+  navDark={true}
+>
+  <PageHeader title="Our Fleet" highlight="Fleet" bgImage={heroBg.src} />
 
-  <section class="py-24 md:py-28">
+  <section class="py-12 md:py-28">
     <div class="site-container mx-auto max-w-4xl">
       <div class="prose prose-lg dark:prose-invert max-w-none" data-mos="fade-up">
         <p class="lead">
-          We provide a like-for-like replacement vehicle on a credit hire basis after a non-fault accident. Our fleet covers everything from private cars to people carriers, so you can stay on the road while yours is being repaired.
+          We provide a like-for-like replacement vehicle on a credit hire basis after a non-fault
+          accident. Our fleet covers everything from private cars to people carriers, so you can
+          stay on the road while yours is being repaired.
         </p>
         <p>
-          All charges are recovered directly from the at-fault party's insurer. Whether you need a compact saloon for personal use or a spacious minibus for your taxi business, we have the right vehicle ready and waiting.
+          All charges are recovered directly from the at-fault party's insurer. Whether you need a
+          compact saloon for personal use or a spacious minibus for your taxi business, we have the
+          right vehicle ready and waiting.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Taxi Fleet -->
-  <section class="py-12 md:py-20 bg-base-50 dark:bg-base-900">
+  <section class="bg-base-50 dark:bg-base-900 py-12 md:py-20">
     <div class="site-container mx-auto">
       <div class="mb-12 text-center" data-mos="fade-up">
         <Badge>Taxi Fleet</Badge>
         <h2 class="h2 mb-4">Taxi &amp; Private Hire Fleet</h2>
-        <p class="description text-lg md:text-xl">Purpose-built for taxi drivers and PHV operators who need to stay on the road.</p>
+        <p class="description text-lg md:text-xl">
+          Purpose-built for taxi drivers and PHV operators who need to stay on the road.
+        </p>
       </div>
 
       <div class="-mx-4 flex flex-wrap items-center">
@@ -52,39 +69,59 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
           <div data-mos="fade-right">
             <h3 class="mb-6 text-2xl font-bold">Available Vehicles</h3>
             <ul class="space-y-4">
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Toyota Prius</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Hybrid — fuel-efficient, ideal for taxi work</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Hybrid — fuel-efficient, ideal for taxi work
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Toyota Corolla</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Reliable saloon, perfect for everyday use</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Reliable saloon, perfect for everyday use
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Mercedes E-Class — Prestige</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Premium executive saloon for executive hire</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Premium executive saloon for executive hire
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Mercedes Vito — 9 Seater</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Spacious minibus for group transport</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Spacious minibus for group transport
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Volkswagen Sharan — 7 Seater</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Family-friendly MPV, ideal for larger groups</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Family-friendly MPV, ideal for larger groups
+                  </p>
                 </div>
               </li>
             </ul>
@@ -100,11 +137,13 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
       <div class="mb-12 text-center" data-mos="fade-up">
         <Badge>Private Hire</Badge>
         <h2 class="h2 mb-4">Private Car Fleet</h2>
-        <p class="description text-lg md:text-xl">Everyday hatchbacks and saloons for private individuals needing a temporary replacement.</p>
+        <p class="description text-lg md:text-xl">
+          Everyday hatchbacks and saloons for private individuals needing a temporary replacement.
+        </p>
       </div>
 
       <div class="-mx-4 flex flex-wrap items-center">
-        <div class="mb-10 w-full px-4 md:mb-0 md:w-1/2 md:order-2">
+        <div class="mb-10 w-full px-4 md:order-2 md:mb-0 md:w-1/2">
           <div class="overflow-hidden rounded-2xl" data-mos="fade-right">
             <Image
               src={fleetPrivate}
@@ -115,36 +154,52 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
             />
           </div>
         </div>
-        <div class="w-full px-4 md:w-1/2 md:order-1">
+        <div class="w-full px-4 md:order-1 md:w-1/2">
           <div data-mos="fade-left">
             <h3 class="mb-6 text-2xl font-bold">Available Vehicles</h3>
             <ul class="space-y-4">
-              <li class="flex items-center gap-3 rounded-xl bg-base-50 p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="bg-base-50 dark:bg-base-800 flex items-center gap-3 rounded-xl p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Audi A3</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Premium hatchback with style and comfort</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Premium hatchback with style and comfort
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-base-50 p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="bg-base-50 dark:bg-base-800 flex items-center gap-3 rounded-xl p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Volkswagen Golf</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Iconic hatchback, reliable and versatile</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Iconic hatchback, reliable and versatile
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-base-50 p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="bg-base-50 dark:bg-base-800 flex items-center gap-3 rounded-xl p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Toyota Auris</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Compact hatchback, efficient and practical</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Compact hatchback, efficient and practical
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-base-50 p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="bg-base-50 dark:bg-base-800 flex items-center gap-3 rounded-xl p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Vauxhall Corsa</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Small hatchback — ideal for city driving</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Small hatchback — ideal for city driving
+                  </p>
                 </div>
               </li>
             </ul>
@@ -155,12 +210,14 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
   </section>
 
   <!-- Exotic Car Hire -->
-  <section class="py-12 md:py-20 bg-base-50 dark:bg-base-900">
+  <section class="bg-base-50 dark:bg-base-900 py-12 md:py-20">
     <div class="site-container mx-auto">
       <div class="mb-12 text-center" data-mos="fade-up">
         <Badge>Sports &amp; Performance</Badge>
         <h2 class="h2 mb-4">Exotic Car Hire — Sports &amp; Performance</h2>
-        <p class="description text-lg md:text-xl">Premium sports cars and luxury SUVs for those who demand the very best.</p>
+        <p class="description text-lg md:text-xl">
+          Premium sports cars and luxury SUVs for those who demand the very best.
+        </p>
       </div>
 
       <div class="-mx-4 flex flex-wrap items-center">
@@ -179,39 +236,59 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
           <div data-mos="fade-right">
             <h3 class="mb-6 text-2xl font-bold">Available Vehicles</h3>
             <ul class="space-y-4">
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Range Rover</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Luxury SUV — unmatched prestige and comfort</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Luxury SUV — unmatched prestige and comfort
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Aston Martin DBX</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Ultra-luxury performance SUV</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Ultra-luxury performance SUV
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Porsche Cayenne Turbo GT</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">High-performance luxury SUV</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    High-performance luxury SUV
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">Porsche Macan</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Compact performance SUV with sporty handling</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Compact performance SUV with sporty handling
+                  </p>
                 </div>
               </li>
-              <li class="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-base-800">
-                <Icon name="tabler/car" class="size-6 shrink-0 text-primary-500" />
+              <li
+                class="dark:bg-base-800 flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+              >
+                <Icon name="tabler/car" class="text-primary-500 size-6 shrink-0" />
                 <div>
                   <span class="font-semibold">BMW M5</span>
-                  <p class="text-sm text-base-600 dark:text-base-400">Iconic sports saloon — power meets luxury</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Iconic sports saloon — power meets luxury
+                  </p>
                 </div>
               </li>
             </ul>
@@ -221,7 +298,7 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
     </div>
   </section>
 
-  <section class="py-24 md:py-28">
+  <section class="py-12 md:py-28">
     <div class="site-container mx-auto max-w-6xl">
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="mb-12 w-full px-4 md:mb-0 md:w-1/2">
@@ -240,39 +317,50 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
             <Badge>Ride with Confidence</Badge>
             <h2 class="h2 mb-6">Like-for-Like Replacement</h2>
             <p class="description mb-6 text-lg md:text-xl">
-              We aim to provide a vehicle that matches your own as closely as possible. If you drive a Prius for work, you'll get a Prius. If you need a 9-seater for your taxi business, that's what we'll arrange.
+              We aim to provide a vehicle that matches your own as closely as possible. If you drive
+              a Prius for work, you'll get a Prius. If you need a 9-seater for your taxi business,
+              that's what we'll arrange.
             </p>
             <p class="description text-lg md:text-xl">
-              Every vehicle in our fleet is fully insured, well-maintained, and available for prompt delivery. We understand that being without a vehicle costs you money, so we move fast.
+              Every vehicle in our fleet is fully insured, well-maintained, and available for prompt
+              delivery. We understand that being without a vehicle costs you money, so we move fast.
             </p>
 
             <div class="mt-8 grid grid-cols-2 gap-6">
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Credit hire basis</h4>
-                  <p class="text-sm text-base-600 dark:text-base-400">Costs recovered from the at-fault insurer</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Costs recovered from the at-fault insurer
+                  </p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Fast delivery</h4>
-                  <p class="text-sm text-base-600 dark:text-base-400">Replacement vehicle arranged promptly</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Replacement vehicle arranged promptly
+                  </p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Fully insured</h4>
-                  <p class="text-sm text-base-600 dark:text-base-400">Comprehensive insurance included</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Comprehensive insurance included
+                  </p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Like-for-like</h4>
-                  <p class="text-sm text-base-600 dark:text-base-400">Matched to your usual vehicle type</p>
+                  <p class="text-base-600 dark:text-base-400 text-sm">
+                    Matched to your usual vehicle type
+                  </p>
                 </div>
               </div>
             </div>

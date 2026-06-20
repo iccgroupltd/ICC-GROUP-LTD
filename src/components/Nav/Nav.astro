@@ -49,7 +49,7 @@ const { navDark = false } = Astro.props as Props;
 
         <!-- desktop nav menu -->
         <div class="flex flex-auto justify-end">
-          <nav class="hidden md:block">
+          <nav id="desktop-nav" class="hidden md:block">
             <ul class="flex h-fit items-center px-4">
               {
                 // if dropdown exists, setup the dropdown, otherwise it is just a link
@@ -110,11 +110,14 @@ const { navDark = false } = Astro.props as Props;
     @apply bg-base-950;
   }
 
-  #nav__container.navbar--initial.navbar--dark :global(.nav__link--base) {
+  /* desktop nav lives in #desktop-nav; mobile drawer has its own <nav> with
+     different theming needs (it covers the hero, so it follows the user's color
+     theme, not navbar--dark). */
+  #nav__container.navbar--initial.navbar--dark :global(#desktop-nav .nav__link--base) {
     color: var(--color-base-200);
   }
 
-  #nav__container.navbar--initial.navbar--dark :global(.nav__link--base:hover) {
+  #nav__container.navbar--initial.navbar--dark :global(#desktop-nav .nav__link--base:hover) {
     color: var(--color-base-100);
   }
 
@@ -127,17 +130,10 @@ const { navDark = false } = Astro.props as Props;
     border-color: var(--color-base-800);
   }
 
-  #nav__container.navbar--initial.navbar--dark #mobile-nav__burger svg,
-  #nav__container.navbar--initial.navbar--dark #mobile-nav__close svg {
+  /* hamburger icon sits on the dark navbar — force light so it stays visible.
+     Selector needs :global() because the icon lives in MobileNav.astro. */
+  #nav__container.navbar--initial.navbar--dark :global(#mobile-nav__burger svg) {
     color: var(--color-base-200);
-  }
-
-  #nav__container.navbar--initial.navbar--dark #mobile-nav__content {
-    background-color: var(--color-base-950);
-  }
-
-  #nav__container.navbar--initial.navbar--dark #mobile-nav__content hr {
-    border-color: var(--color-base-800);
   }
 </style>
 

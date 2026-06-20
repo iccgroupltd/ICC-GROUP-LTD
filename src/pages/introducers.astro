@@ -4,69 +4,130 @@ import PageHeader from "@components/PageHeader/PageHeader.astro";
 import Badge from "@components/Badge/Badge.astro";
 import CtaCardSplit from "@components/Cta/CtaCardSplit.astro";
 import { Icon } from "astro-icon/components";
+import { getImage } from "astro:assets";
+import heroPlaceholder from "@assets/images/introducers-hero.jpg";
+
+const heroBg = await getImage({
+  src: heroPlaceholder,
+  format: "webp",
+  widths: [2400],
+  quality: "high",
+});
 ---
 
-<BaseLayout title="Introducers & Partners | ICC Taxi Claims" description="Partner with ICC Taxi Claims &mdash; referrals for body shops, solicitors, insurers, and taxi operators. Grow your business while helping accident victims." navDark={true}>
-  <PageHeader title="Introducers & Partners" highlight="Partners" />
+<BaseLayout
+  title="Introducers & Partners | ICC Taxi Claims"
+  description="Partner with ICC Taxi Claims — referrals for body shops, solicitors, insurers, and taxi operators. Grow your business while helping accident victims."
+  navDark={true}
+>
+  <PageHeader title="Introducers & Partners" highlight="Partners" bgImage={heroBg.src} />
 
-  <section class="py-24 md:py-28">
+  <section class="py-12 md:py-28">
     <div class="site-container mx-auto max-w-4xl">
       <div class="prose prose-lg dark:prose-invert max-w-none" data-mos="fade-up">
         <p class="lead">
-          We work with a wide network of introducers and partners &mdash; from body shops and solicitors to insurers and taxi operators. If you refer clients to us, we ensure they receive excellent service and you receive competitive referral fees.
+          We work with a wide network of introducers and partners &mdash; from body shops and
+          solicitors to insurers and taxi operators. If you refer clients to us, we ensure they
+          receive excellent service and you receive competitive referral fees.
         </p>
         <p>
-          Our credit hire and accident management service is built on strong relationships. Whether you're a garage that wants to offer clients a courtesy car, a solicitor who needs a reliable credit hire partner, or a taxi operator looking to support your drivers, we'd like to hear from you.
+          Our credit hire and accident management service is built on strong relationships. Whether
+          you're a garage that wants to offer clients a courtesy car, a solicitor who needs a
+          reliable credit hire partner, or a taxi operator looking to support your drivers, we'd
+          like to hear from you.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="py-12 md:py-20 bg-base-50 dark:bg-base-900">
+  <section class="bg-base-50 dark:bg-base-900 py-12 md:py-20">
     <div class="site-container mx-auto">
       <div class="mb-16 text-center" data-mos="fade-up">
         <Badge>Who We Work With</Badge>
         <h2 class="h2 mb-4">Partnership Categories</h2>
-        <p class="description text-lg md:text-xl">We value every introduction &mdash; and we make it easy and rewarding.</p>
+        <p class="description text-lg md:text-xl">
+          We value every introduction &mdash; and we make it easy and rewarding.
+        </p>
       </div>
 
       <div class="grid gap-8 md:grid-cols-2">
-        <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-base-800" data-mos="zoom-in" data-mos-delay="0">
-          <div class="mb-4 flex size-14 items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/30">
-            <Icon name="tabler/edit-circle" class="size-7 text-primary-600 dark:text-primary-400" />
+        <div
+          class="dark:bg-base-800 rounded-2xl bg-white p-8 shadow-sm"
+          data-mos="zoom-in"
+          data-mos-delay="0"
+        >
+          <div
+            class="bg-primary-100 dark:bg-primary-900/30 mb-4 flex size-14 items-center justify-center rounded-xl"
+          >
+            <Icon name="tabler/edit-circle" class="text-primary-600 dark:text-primary-400 size-7" />
           </div>
           <h3 class="mb-2 text-xl font-bold">Body Shops &amp; Garages</h3>
-          <p class="text-base-600 dark:text-base-400">Offer your customers a complete accident management service. We provide their replacement vehicle while you carry out the repairs &mdash; keeping them mobile and keeping your workshop busy.</p>
+          <p class="text-base-600 dark:text-base-400">
+            Offer your customers a complete accident management service. We provide their
+            replacement vehicle while you carry out the repairs &mdash; keeping them mobile and
+            keeping your workshop busy.
+          </p>
         </div>
 
-        <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-base-800" data-mos="zoom-in" data-mos-delay="0.1">
-          <div class="mb-4 flex size-14 items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/30">
-            <Icon name="tabler/script" class="size-7 text-primary-600 dark:text-primary-400" />
+        <div
+          class="dark:bg-base-800 rounded-2xl bg-white p-8 shadow-sm"
+          data-mos="zoom-in"
+          data-mos-delay="0.1"
+        >
+          <div
+            class="bg-primary-100 dark:bg-primary-900/30 mb-4 flex size-14 items-center justify-center rounded-xl"
+          >
+            <Icon name="tabler/script" class="text-primary-600 dark:text-primary-400 size-7" />
           </div>
           <h3 class="mb-2 text-xl font-bold">Solicitors &amp; Legal Firms</h3>
-          <p class="text-base-600 dark:text-base-400">Refer personal injury and accident clients to us for credit hire vehicles. We handle the hire side while you focus on the legal claim &mdash; and we pay competitive referral fees.</p>
+          <p class="text-base-600 dark:text-base-400">
+            Refer personal injury and accident clients to us for credit hire vehicles. We handle the
+            hire side while you focus on the legal claim &mdash; and we pay competitive referral
+            fees.
+          </p>
         </div>
 
-        <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-base-800" data-mos="zoom-in" data-mos-delay="0.2">
-          <div class="mb-4 flex size-14 items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/30">
-            <Icon name="tabler/circle-check" class="size-7 text-primary-600 dark:text-primary-400" />
+        <div
+          class="dark:bg-base-800 rounded-2xl bg-white p-8 shadow-sm"
+          data-mos="zoom-in"
+          data-mos-delay="0.2"
+        >
+          <div
+            class="bg-primary-100 dark:bg-primary-900/30 mb-4 flex size-14 items-center justify-center rounded-xl"
+          >
+            <Icon
+              name="tabler/circle-check"
+              class="text-primary-600 dark:text-primary-400 size-7"
+            />
           </div>
           <h3 class="mb-2 text-xl font-bold">Insurance Brokers</h3>
-          <p class="text-base-600 dark:text-base-400">Help your policyholders get back on the road quickly after a non-fault accident. We manage the entire credit hire process and keep you informed at every stage.</p>
+          <p class="text-base-600 dark:text-base-400">
+            Help your policyholders get back on the road quickly after a non-fault accident. We
+            manage the entire credit hire process and keep you informed at every stage.
+          </p>
         </div>
 
-        <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-base-800" data-mos="zoom-in" data-mos-delay="0.3">
-          <div class="mb-4 flex size-14 items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/30">
-            <Icon name="tabler/star-filled" class="size-7 text-primary-600 dark:text-primary-400" />
+        <div
+          class="dark:bg-base-800 rounded-2xl bg-white p-8 shadow-sm"
+          data-mos="zoom-in"
+          data-mos-delay="0.3"
+        >
+          <div
+            class="bg-primary-100 dark:bg-primary-900/30 mb-4 flex size-14 items-center justify-center rounded-xl"
+          >
+            <Icon name="tabler/star-filled" class="text-primary-600 dark:text-primary-400 size-7" />
           </div>
           <h3 class="mb-2 text-xl font-bold">Taxi &amp; Fleet Operators</h3>
-          <p class="text-base-600 dark:text-base-400">Keep your drivers on the road and earning. We provide like-for-like replacement taxis on credit hire so your business doesn't lose income after a non-fault accident.</p>
+          <p class="text-base-600 dark:text-base-400">
+            Keep your drivers on the road and earning. We provide like-for-like replacement taxis on
+            credit hire so your business doesn't lose income after a non-fault accident.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-24 md:py-28">
+  <section class="py-12 md:py-28">
     <div class="site-container mx-auto max-w-6xl">
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="mb-12 w-full px-4 md:mb-0 md:w-1/2">
@@ -74,46 +135,61 @@ import { Icon } from "astro-icon/components";
             <Badge>Why Partner With Us</Badge>
             <h2 class="h2 mb-6">A Partnership That Works for You</h2>
             <p class="description mb-6 text-lg md:text-xl">
-              We treat every introduction as a long-term relationship. Your clients receive first-class service, and you benefit from a reliable, transparent referral process.
+              We treat every introduction as a long-term relationship. Your clients receive
+              first-class service, and you benefit from a reliable, transparent referral process.
             </p>
 
             <div class="space-y-6">
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Competitive referral fees</h4>
-                  <p class="text-base-600 dark:text-base-400">Get paid for every eligible introduction &mdash; no minimums, no caps.</p>
+                  <p class="text-base-600 dark:text-base-400">
+                    Get paid for every eligible introduction &mdash; no minimums, no caps.
+                  </p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Dedicated account manager</h4>
-                  <p class="text-base-600 dark:text-base-400">A single point of contact for all your referrals and queries.</p>
+                  <p class="text-base-600 dark:text-base-400">
+                    A single point of contact for all your referrals and queries.
+                  </p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Transparent tracking</h4>
-                  <p class="text-base-600 dark:text-base-400">Know exactly where every referral stands &mdash; from initial contact to hire completion.</p>
+                  <p class="text-base-600 dark:text-base-400">
+                    Know exactly where every referral stands &mdash; from initial contact to hire
+                    completion.
+                  </p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <Icon name="tabler/circle-check" class="mt-1 size-6 shrink-0 text-primary-500" />
+                <Icon name="tabler/circle-check" class="text-primary-500 mt-1 size-6 shrink-0" />
                 <div>
                   <h4 class="font-semibold">Fast vehicle delivery</h4>
-                  <p class="text-base-600 dark:text-base-400">Your clients get a replacement vehicle quickly, improving their experience and your reputation.</p>
+                  <p class="text-base-600 dark:text-base-400">
+                    Your clients get a replacement vehicle quickly, improving their experience and
+                    your reputation.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="w-full px-4 md:w-1/2">
-          <div class="overflow-hidden rounded-2xl bg-primary-500 p-10 text-white" data-mos="fade-left">
+          <div
+            class="bg-primary-500 overflow-hidden rounded-2xl p-10 text-white"
+            data-mos="fade-left"
+          >
             <h3 class="mb-4 text-2xl font-bold">Become an Introducer</h3>
             <p class="mb-6 text-lg text-white/90">
-              Join our growing network of partners. Fill in the form below and we'll be in touch within one working day to discuss how we can work together.
+              Join our growing network of partners. Fill in the form below and we'll be in touch
+              within one working day to discuss how we can work together.
             </p>
             <div class="space-y-4">
               <div class="flex items-center gap-3">

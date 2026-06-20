@@ -2,17 +2,27 @@
 interface Props {
   title: string;
   highlight?: string;
+  bgImage?: string;
 }
 
-const { title, highlight } = Astro.props;
+const { title, highlight, bgImage } = Astro.props;
 
 const parts = highlight ? title.split(highlight) : [title];
 ---
 
-<section class="bg-base-950 flex min-h-[60vh] items-center justify-center px-4 py-24 md:min-h-[70vh] md:py-32">
-  <h1 class="text-center text-4xl leading-tight font-bold uppercase tracking-tight text-white md:text-6xl lg:text-7xl">
+<section
+  class:list={[
+    "relative flex min-h-[60vh] items-center justify-center overflow-hidden px-4 py-24 md:min-h-[70vh] md:py-32",
+    { "bg-base-950": !bgImage },
+  ]}
+  style={bgImage ? `background-image: url('${bgImage}'); background-size: cover; background-position: center;` : undefined}
+>
+  {bgImage && <div class="absolute inset-0 bg-black/70"></div>}
+  <h1
+    class="relative text-center text-4xl leading-tight font-bold uppercase tracking-tight text-white md:text-6xl lg:text-7xl"
+  >
     {parts[0]}
-    {highlight && <span class="text-primary-500">{highlight}</span>}
+    {highlight && <span class:list={[{ "text-primary-200": bgImage, "text-primary-500": !bgImage }]}>{highlight}</span>}
     {parts[1]}
   </h1>
 </section>

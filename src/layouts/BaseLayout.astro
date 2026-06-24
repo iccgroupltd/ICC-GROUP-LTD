@@ -55,6 +55,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
       postFrontmatter={postFrontmatter ? postFrontmatter : undefined}
       noindex={noindex}
     />
+    <slot name="structured-data" />
   </head>
   <body id="body" class={` ${siteSettings.useAnimations === true ? "use-animations" : ""}`}>
     <!-- put cookie consent first so it is seen first by screen readers -->

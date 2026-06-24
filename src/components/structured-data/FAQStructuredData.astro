@@ -1,0 +1,39 @@
+---
+import type { FAQPage, WithContext } from "schema-dts";
+
+interface FaqItem {
+	question: string;
+	answer: string;
+}
+
+interface Props {
+	items: FaqItem[];
+}
+
+const { items } = Astro.props;
+const pathname = Astro.url.pathname
+	.replace(/\/$/, "")
+	.replace(/\.(html?|php)$/, "")
+	.replace(/^\/index$/, "/") || "/";
+const pageUrl = new URL(pathname, Astro.site);
+
+const structuredData: WithContext<FAQPage> = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"@id": `${pageUrl.href}#faqpage`,
+	mainEntity: items.map(({ question, answer }) => ({
+		"@type": "Question",
+		name: question,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: answer,
+		},
+	})),
+};
+---
+
+<script
+	is:inline
+	type="application/ld+json"
+	set:html={JSON.stringify(structuredData)}
+/>

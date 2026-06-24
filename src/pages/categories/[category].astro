@@ -8,6 +8,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import CategoryCloud from "@components/CategoryCloud/CategoryCloud.astro";
 import Badge from "@components/Badge/Badge.astro";
 import PostCard from "@components/PostCard/PostCardAtlas.astro";
+import CollectionPageStructuredData from "@components/structured-data/CollectionPageStructuredData.astro";
+import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 
 // utils
 import { getAllPosts, countItems, sortByValue } from "@js/blogUtils";
@@ -47,6 +49,21 @@ const filteredPosts = posts.filter((post) => {
   title={`Our Blog Posts on ${humanize(category)}`}
   description="Learn from our blog posts about web development, design, and more."
 >
+  <CollectionPageStructuredData
+    slot="structured-data"
+    items={filteredPosts}
+    baseUrl={`/categories/${category}`}
+    title={`Our Blog Posts on ${humanize(category)}`}
+    description="Learn from our blog posts about web development, design, and more."
+  />
+  <Breadcrumbs
+    slot="structured-data"
+    items={[
+      { name: "ICC Taxi Claims", url: "/" },
+      { name: "Categories", url: "/categories" },
+      { name: humanize(category), url: `/categories/${category}` },
+    ]}
+  />
   <section class="site-container">
     <div
       class="overflow-x-clip bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat pt-24 md:pt-32 dark:bg-[url('/assets/pattern-dark.svg')]"

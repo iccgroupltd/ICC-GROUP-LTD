@@ -1,0 +1,76 @@
+---
+import type { BreadcrumbList, WithContext } from "schema-dts";
+import { SITE_NAME } from "@/consts";
+
+interface BreadcrumbItem {
+	name: string;
+	url: string;
+}
+
+interface Props {
+	items?: BreadcrumbItem[];
+}
+
+const pathname = Astro.url.pathname
+	.replace(/\/$/, "")
+	.replace(/\.(html?|php)$/, "")
+	.replace(/^\/index$/, "/");
+
+function formatBreadcrumbName(segment: string): string {
+	return segment
+		.split("-")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(" ");
+}
+
+function generateBreadcrumbs(pathname: string): BreadcrumbItem[] {
+	const items: BreadcrumbItem[] = [{ name: SITE_NAME, url: "/" }];
+
+	if (pathname === "" || pathname === "/") {
+		return items;
+	}
+
+	const segments = pathname.split("/").filter(Boolean);
+
+	let currentPath = "";
+	for (const segment of segments) {
+		currentPath += `/${segment}`;
+		items.push({
+			name: formatBreadcrumbName(segment),
+			url: currentPath,
+		});
+	}
+
+	return items;
+}
+
+const items = Astro.props.items ?? generateBreadcrumbs(pathname);
+const pageUrl = new URL(pathname || "/", Astro.site);
+
+const structuredData: WithContext<BreadcrumbList> = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"@id": `${pageUrl.href}#breadcrumbs`,
+	numberOfItems: items.length,
+	itemListOrder: "Ascending",
+	itemListElement: items.map((item, index) => {
+		const itemUrl = new URL(item.url, Astro.site).href;
+		return {
+			"@type": "ListItem",
+			position: index + 1,
+			item: {
+				"@type": "WebPage",
+				"@id": `${itemUrl}#webpage`,
+				name: item.name,
+				url: itemUrl,
+			},
+		};
+	}),
+};
+---
+
+<script
+	is:inline
+	type="application/ld+json"
+	set:html={JSON.stringify(structuredData)}
+/>

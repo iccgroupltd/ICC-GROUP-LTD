@@ -4,9 +4,17 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 // components
 import CategoryCloud from "@components/CategoryCloud/CategoryCloud.astro";
+import WebPageStructuredData from "@components/structured-data/WebPageStructuredData.astro";
+import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 ---
 
 <BaseLayout title="Recent Blog Posts" description="Recent Blog Posts Description">
+  <WebPageStructuredData
+    slot="structured-data"
+    title="Categories | ICC Taxi Claims"
+    description="Browse all blog post categories from ICC Taxi Claims."
+  />
+  <Breadcrumbs slot="structured-data" items={[{ name: "ICC Taxi Claims", url: "/" }, { name: "Categories", url: "/categories" }]} />
   <section
     class="site-container overflow-x-clip bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat py-36 md:pt-44 dark:bg-[url('/assets/pattern-dark.svg')]"
   >

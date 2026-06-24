@@ -21,6 +21,7 @@ const { title, description, image = undefined } = Astro.props as Props;
 ---
 
 <BaseLayout title={title} description={description} image={image}>
+  <slot name="structured-data" slot="structured-data" />
   <!-- service heading -->
   <section class="site-container mt-16 flex w-full flex-col items-center overflow-x-clip">
     <div

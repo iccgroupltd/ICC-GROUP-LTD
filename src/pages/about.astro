@@ -7,6 +7,8 @@ import Badge from "@components/Badge/Badge.astro";
 import Button from "@components/Button/Button.astro";
 import CtaCardSplit from "@components/Cta/CtaCardSplit.astro";
 import FeatureCard from "@components/FeatureCard/FeatureCardSmall.astro";
+import WebPageStructuredData from "@components/structured-data/WebPageStructuredData.astro";
+import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 
 import serviceCreditHire from "@assets/images/service-credit-hire.jpg";
 import serviceBodyShop from "@assets/images/service-body-shop.jpg";
@@ -84,6 +86,12 @@ const whyChooseUs: FeatureData[] = [
   title="About Us | ICC Taxi Claims"
   description="ICC TAXI CLAIMS provides specialist credit hire and accident management services for private individuals and taxi drivers involved in non-fault accidents. Keeping you on the road since day one."
 >
+  <WebPageStructuredData
+    slot="structured-data"
+    title="About Us | ICC Taxi Claims"
+    description="ICC TAXI CLAIMS provides specialist credit hire and accident management services for private individuals and taxi drivers involved in non-fault accidents."
+  />
+  <Breadcrumbs slot="structured-data" />
   <!-- Intro section -->
   <section
     id="about-intro"

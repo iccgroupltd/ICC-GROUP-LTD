@@ -36,7 +36,7 @@ const authorsData = await getEntries(authors);
   <article class="site-container mt-24">
     <!-- Blog post info -->
     <div class="flex w-full flex-col items-center">
-      <div class="mx-auto flex w-full max-w-[800px]">
+      <div class="mx-auto flex w-full max-w-200">
         <div class="mx-auto text-center">
           <!-- Categories -->
           <div class="flex justify-center gap-4">
@@ -79,7 +79,7 @@ const authorsData = await getEntries(authors);
       </div>
 
       <!-- blog post main image -->
-      <div class="mt-6 max-w-[1000px] overflow-hidden">
+      <div class="mt-6 max-w-250 overflow-hidden">
         <Image
           src={heroImage}
           alt={`Cover for ${title}`}

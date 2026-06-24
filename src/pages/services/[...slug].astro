@@ -7,7 +7,6 @@ import ServiceLayoutCenter from "@layouts/ServiceLayoutCenter.astro";
 // components
 import ExternalLink from "@components/MarkdownComponents/ExternalLink.astro";
 import WebPageStructuredData from "@components/structured-data/WebPageStructuredData.astro";
-import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 
 // utils
 import { filterCollectionByLanguage } from "@js/localeUtils";
@@ -36,14 +35,6 @@ const { Content } = await render(service);
     slot="structured-data"
     title={service.data.title}
     description={service.data.description}
-  />
-  <Breadcrumbs
-    slot="structured-data"
-    items={[
-      { name: "ICC Taxi Claims", url: "/" },
-      { name: "Services", url: "/services" },
-      { name: service.data.title, url: `/services/${service.id}` },
-    ]}
   />
   <Content components={{ a: ExternalLink }} />
 </ServiceLayoutCenter>

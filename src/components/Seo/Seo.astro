@@ -92,6 +92,7 @@ const imageUrl =
     optional: {
       description: description,
       siteName: siteData.title,
+      locale: "en_GB",
     },
     image: {
       type: "image/webp",
@@ -111,6 +112,8 @@ const imageUrl =
   noindex={noindex}
   nofollow={noindex}
 />
+
+<meta name="twitter:image:alt" content={title} />
 
 <!-- hreflang attributes -->
 <HrefLang />

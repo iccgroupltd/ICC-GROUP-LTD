@@ -37,6 +37,7 @@ const { navItem } = Astro.props as Props;
     />
   </button>
   <div
+    role="menu"
     id={`${slugify(navItem.text)}-dropdown-menu-content`}
     aria-labelledby={`${slugify(navItem.text)}-dropdown-menu`}
     data-state="closed"
@@ -47,7 +48,7 @@ const { navItem } = Astro.props as Props;
     ]}
   >
     <ul
-      class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900 mt-4 w-[14.5rem] max-w-[20rem] min-w-[9rem] rounded-md border border-solid p-1.5 drop-shadow-sm"
+      class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900 mt-4 w-58 max-w-[20rem] min-w-36 rounded-md border border-solid p-1.5 drop-shadow-sm"
     >
       {navItem.dropdown.map((dropdownItem) => <NavLink navItem={dropdownItem} class="w-full" />)}
     </ul>

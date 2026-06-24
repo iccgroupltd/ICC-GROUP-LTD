@@ -16,7 +16,7 @@ const { class: className, animationDuration = 300, ...rest } = Astro.props as Pr
   {...rest}
 >
   <!-- placeholder -->
-  <div class="relative size-5">
+  <span class="relative size-5 block">
     <Icon
       name="tabler/moon-stars"
       class:list={["theme-toggle__dark-icon absolute inset-0 size-5"]}
@@ -33,7 +33,7 @@ const { class: className, animationDuration = 300, ...rest } = Astro.props as Pr
         "--animation-duration": `${animationDuration}ms`,
       }}
     />
-  </div>
+  </span>
 </button>
 
 <style>

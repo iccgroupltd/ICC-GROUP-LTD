@@ -4,15 +4,7 @@ import PageHeader from "@components/PageHeader/PageHeader.astro";
 import Badge from "@components/Badge/Badge.astro";
 import CtaCardSplit from "@components/Cta/CtaCardSplit.astro";
 import { Icon } from "astro-icon/components";
-import { getImage } from "astro:assets";
 import heroPlaceholder from "@assets/images/introducers-hero.jpg";
-
-const heroBg = await getImage({
-  src: heroPlaceholder,
-  format: "webp",
-  widths: [2400],
-  quality: "high",
-});
 import WebPageStructuredData from "@components/structured-data/WebPageStructuredData.astro";
 import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 ---
@@ -28,7 +20,7 @@ import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
     description="Partner with ICC Taxi Claims — referrals for body shops, solicitors, insurers, and taxi operators. Grow your business while helping accident victims."
   />
   <Breadcrumbs slot="structured-data" />
-  <PageHeader title="Introducers & Partners" highlight="Partners" bgImage={heroBg.src} />
+  <PageHeader title="Introducers & Partners" highlight="Partners" bgImage={heroPlaceholder} />
 
   <section class="py-12 md:py-28">
     <div class="site-container mx-auto max-w-4xl">

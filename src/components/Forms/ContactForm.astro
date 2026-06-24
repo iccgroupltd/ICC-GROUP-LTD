@@ -19,8 +19,17 @@ const textareaClass =
 ---
 
 <section id="contact" class="mx-auto w-full">
-  <form id="contact-form" name="contact" class="flex flex-col gap-5">
-    <input type="hidden" name="form-name" value="contact" />
+  <form
+    id="g51sSupfB"
+    name="contact"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    class="flex flex-col gap-5"
+  >
+    <input type="hidden" name="access_key" value="6fdf4158-a8dd-411e-b872-c482fe3e6170" />
+    <input type="hidden" name="subject" value="New contact form submission — Taxi site" />
+    <input type="hidden" name="from_name" value="Taxi website" />
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
     <div>
       <div class="grid gap-5 sm:grid-cols-2">
         <div class="flex flex-col">
@@ -165,4 +174,72 @@ const textareaClass =
     </div>
     <Button variant="primary" type="submit" class="h-12 w-full rounded-full">Submit</Button>
   </form>
+  <div
+    id="contact-status"
+    role="status"
+    aria-live="polite"
+    class="mt-4 hidden rounded-2xl p-4 text-center text-lg font-medium"
+  >
+  </div>
 </section>
+
+<script is:inline>
+  const form = document.getElementById("g51sSupfB");
+  const status = document.getElementById("contact-status");
+
+  function showStatus(message, isError) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove(
+      "hidden",
+      "bg-green-100",
+      "text-green-800",
+      "dark:bg-green-900/40",
+      "dark:text-green-200",
+      "bg-red-100",
+      "text-red-800",
+      "dark:bg-red-900/40",
+      "dark:text-red-200",
+    );
+    if (isError) {
+      status.classList.add(
+        "bg-red-100",
+        "text-red-800",
+        "dark:bg-red-900/40",
+        "dark:text-red-200",
+      );
+    } else {
+      status.classList.add(
+        "bg-green-100",
+        "text-green-800",
+        "dark:bg-green-900/40",
+        "dark:text-green-200",
+      );
+    }
+  }
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const json = await res.json();
+      if (json.success) {
+        showStatus("Thanks! Your message has been sent.", false);
+        form.reset();
+      } else {
+        showStatus(json.message || "Something went wrong. Please try again.", true);
+      }
+    } catch (err) {
+      showStatus("Something went wrong. Please try again.", true);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+</script>

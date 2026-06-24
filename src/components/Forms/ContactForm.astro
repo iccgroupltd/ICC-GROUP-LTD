@@ -12,10 +12,10 @@
 import Button from "@components/Button/Button.astro";
 
 const inputClass =
-  "h-12 w-full rounded-full border border-base-200 bg-transparent pl-5 text-lg font-normal text-base-600 outline-none transition placeholder-base-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 dark:border-base-700 dark:bg-base-900 dark:text-base-200 dark:placeholder-base-500";
+  "h-12 w-full rounded-full border border-base-200 bg-transparent pl-5 text-lg font-normal text-base-600 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 dark:border-base-700 dark:bg-base-900 dark:text-base-200";
 
 const textareaClass =
-  "w-full rounded-2xl border border-base-200 bg-transparent p-4 text-lg font-normal text-base-600 outline-none transition placeholder-base-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 dark:border-base-700 dark:bg-base-900 dark:text-base-200 dark:placeholder-base-500";
+  "w-full rounded-2xl border border-base-200 bg-transparent p-4 text-lg font-normal text-base-600 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 dark:border-base-700 dark:bg-base-900 dark:text-base-200";
 ---
 
 <section id="contact" class="mx-auto w-full">
@@ -163,8 +163,6 @@ const textareaClass =
         placeholder="Please provide a brief description of the services desired"
         required></textarea>
     </div>
-    <Button variant="primary" type="submit" class="h-12 w-full rounded-full"
-      >Submit</Button
-    >
+    <Button variant="primary" type="submit" class="h-12 w-full rounded-full">Submit</Button>
   </form>
 </section>

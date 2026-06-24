@@ -6,6 +6,7 @@
 // components
 import FaqCard from "./FaqCard.astro";
 import Badge from "@components/Badge/Badge.astro";
+import FAQStructuredData from "@components/structured-data/FAQStructuredData.astro";
 
 // utils
 import { getLocaleFromUrl } from "@js/localeUtils";
@@ -37,6 +38,7 @@ if (remainder === 0) {
 }
 ---
 
+<FAQStructuredData items={faqData} />
 <section
   id="faq-cards"
   class="site-container bg-[url('/assets/pattern-light-big.svg')] bg-center bg-no-repeat py-12 md:py-28 dark:bg-[url('/assets/pattern-dark-big.svg')]"

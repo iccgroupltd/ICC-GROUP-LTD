@@ -1,0 +1,44 @@
+---
+import type { WebPage, WithContext } from "schema-dts";
+import { SITE_NAME, SITE_LANGUAGE } from "@/consts";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	dateModified?: string;
+}
+
+const props = Astro.props;
+const pathname = Astro.url.pathname
+	.replace(/\/$/, "")
+	.replace(/\.(html?|php)$/, "")
+	.replace(/^\/index$/, "/") || "/";
+const pageUrl = new URL(pathname, Astro.site);
+
+const structuredData: WithContext<WebPage> = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"@id": `${pageUrl.href}#webpage`,
+	name: props.title || SITE_NAME,
+	url: pageUrl.href,
+	description: props.description,
+	inLanguage: SITE_LANGUAGE,
+	isPartOf: { "@id": new URL("/#website", Astro.site).href },
+	...(props.image && {
+		image: {
+			"@type": "ImageObject",
+			url: props.image,
+		},
+	}),
+	...(props.dateModified && {
+		dateModified: props.dateModified,
+	}),
+};
+---
+
+<script
+	is:inline
+	type="application/ld+json"
+	set:html={JSON.stringify(structuredData)}
+/>

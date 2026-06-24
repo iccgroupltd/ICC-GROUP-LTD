@@ -13,6 +13,8 @@ const heroBg = await getImage({
   widths: [2400],
   quality: "high",
 });
+import WebPageStructuredData from "@components/structured-data/WebPageStructuredData.astro";
+import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 ---
 
 <BaseLayout
@@ -20,6 +22,12 @@ const heroBg = await getImage({
   description="Partner with ICC Taxi Claims — referrals for body shops, solicitors, insurers, and taxi operators. Grow your business while helping accident victims."
   navDark={true}
 >
+  <WebPageStructuredData
+    slot="structured-data"
+    title="Introducers & Partners | ICC Taxi Claims"
+    description="Partner with ICC Taxi Claims — referrals for body shops, solicitors, insurers, and taxi operators. Grow your business while helping accident victims."
+  />
+  <Breadcrumbs slot="structured-data" />
   <PageHeader title="Introducers & Partners" highlight="Partners" bgImage={heroBg.src} />
 
   <section class="py-12 md:py-28">

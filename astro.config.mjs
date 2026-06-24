@@ -8,7 +8,11 @@ import icon from "astro-icon";
 import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
-  site: "https://atlas.cosmicthemes.com",
+  site: "https://www.icctaxiclaims.co.uk",
+  trailingSlash: "never",
+  build: {
+    format: "file",
+  },
   redirects: {
   },
   

@@ -2,6 +2,9 @@
 // layout
 import BaseLayout from "@layouts/BaseLayout.astro";
 
+// structured data
+import WebSiteStructuredData from "@components/structured-data/WebSiteStructuredData.astro";
+
 // components
 import HeroSideImage from "@components/Hero/HeroSideImage.astro";
 import HeroBgImage from "@components/Hero/HeroBgImage.astro";
@@ -37,6 +40,7 @@ const siteData = getTranslatedData("siteData", currLocale);
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description}>
+  <WebSiteStructuredData slot="structured-data" />
   <HeroSideImage />
   <!-- <HeroBgImage /> -->
   <!-- <HeroCentered /> -->

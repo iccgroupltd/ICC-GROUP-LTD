@@ -5,6 +5,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 // components
 import PostCard from "@components/PostCard/PostCardAtlas.astro";
 import Badge from "@components/Badge/Badge.astro";
+import CollectionPageStructuredData from "@components/structured-data/CollectionPageStructuredData.astro";
+import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 
 // utils
 import { getAllPosts } from "@js/blogUtils";
@@ -18,6 +20,14 @@ const posts = await getAllPosts(currLocale);
   title="Our Blog Posts"
   description="Learn from our blog posts about web development, design, and more."
 >
+  <CollectionPageStructuredData
+    slot="structured-data"
+    items={posts}
+    baseUrl="/blog"
+    title="Our Blog Posts"
+    description="Learn from our blog posts about web development, design, and more."
+  />
+  <Breadcrumbs slot="structured-data" items={[{ name: "ICC Taxi Claims", url: "/" }, { name: "Blog", url: "/blog" }]} />
   <section class="site-container">
     <div
       class="overflow-x-clip bg-[url('/assets/pattern-light.svg')] bg-center bg-no-repeat pt-24 md:pt-32 dark:bg-[url('/assets/pattern-dark.svg')]"

@@ -2,6 +2,7 @@
   "name": "icct-taxi-website",
   "compatibility_date": "2026-06-15",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "html_handling": "drop-trailing-slash"
   }
 }

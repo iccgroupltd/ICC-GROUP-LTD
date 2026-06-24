@@ -1,0 +1,54 @@
+---
+import type { WithContext, Graph } from "schema-dts";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_ORGANIZATION, SITE_LANGUAGE } from "@/consts";
+
+// Home page graph: defines the Organization, WebSite (with SearchAction), and
+// the home WebPage. Nodes are linked via @id so other pages can reference them
+// with simple ID stubs.
+const homeUrl = new URL("/", Astro.site).href;
+const websiteId = new URL("/#website", Astro.site).href;
+const orgId = new URL("/#organization", Astro.site).href;
+const pageId = new URL("/#webpage", Astro.site).href;
+
+const structuredData: WithContext<Graph> = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			...SITE_ORGANIZATION,
+			"@id": orgId,
+		},
+		{
+			"@type": "WebSite",
+			"@id": websiteId,
+			url: homeUrl,
+			name: SITE_NAME,
+			description: SITE_DESCRIPTION,
+			inLanguage: SITE_LANGUAGE,
+			publisher: { "@id": orgId },
+			potentialAction: {
+				"@type": "SearchAction",
+				target: {
+					"@type": "EntryPoint",
+					urlTemplate: new URL("/blog?q={search_term_string}", Astro.site).href,
+				},
+				"query-input": "required name=search_term_string",
+			},
+		},
+		{
+			"@type": "WebPage",
+			"@id": pageId,
+			url: homeUrl,
+			name: SITE_NAME,
+			inLanguage: SITE_LANGUAGE,
+			isPartOf: { "@id": websiteId },
+			about: { "@id": orgId },
+		},
+	],
+};
+---
+
+<script
+	is:inline
+	type="application/ld+json"
+	set:html={JSON.stringify(structuredData)}
+/>

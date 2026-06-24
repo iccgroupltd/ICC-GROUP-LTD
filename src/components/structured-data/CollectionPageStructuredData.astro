@@ -1,0 +1,44 @@
+---
+import type { CollectionPage, WithContext } from "schema-dts";
+import { type CollectionEntry } from "astro:content";
+import { SITE_LANGUAGE } from "@/consts";
+
+interface Props {
+	items: CollectionEntry<"blog">[];
+	baseUrl: string;
+	title: string;
+	description?: string;
+}
+
+const { items, baseUrl, title, description } = Astro.props;
+const normalizedBase = baseUrl
+	.replace(/\/$/, "")
+	.replace(/\.(html?|php)$/, "")
+	.replace(/^\/index$/, "/");
+const pageUrl = new URL(normalizedBase || "/", Astro.site);
+
+const structuredData: WithContext<CollectionPage> = {
+	"@context": "https://schema.org",
+	"@type": "CollectionPage",
+	"@id": `${pageUrl.href}#collectionpage`,
+	url: pageUrl.href,
+	name: title,
+	description: description ?? "",
+	inLanguage: SITE_LANGUAGE,
+	isPartOf: { "@id": new URL("/#website", Astro.site).href },
+	hasPart: items.map((item) => ({
+		"@type": "Article",
+		"@id": new URL(`/blog/${item.id}#article`, Astro.site).href,
+		url: new URL(`/blog/${item.id}`, Astro.site).href,
+		headline: item.data.title,
+		description: item.data.description,
+		datePublished: item.data.pubDate.toISOString(),
+	})),
+};
+---
+
+<script
+	is:inline
+	type="application/ld+json"
+	set:html={JSON.stringify(structuredData)}
+/>

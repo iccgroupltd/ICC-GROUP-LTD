@@ -16,6 +16,8 @@ const heroBg = await getImage({
 import fleetTaxi from "@assets/images/fleet-taxi.jpg";
 import fleetPrivate from "@assets/images/fleet-private.jpg";
 import fleetExotic from "@assets/images/fleet-exotic.jpg";
+import WebPageStructuredData from "@components/structured-data/WebPageStructuredData.astro";
+import Breadcrumbs from "@components/structured-data/Breadcrumbs.astro";
 ---
 
 <BaseLayout
@@ -23,6 +25,12 @@ import fleetExotic from "@assets/images/fleet-exotic.jpg";
   description="Explore ICC Taxi Claims' full fleet — taxi, private car, and exotic hire vehicles. Toyota Prius, Mercedes E-Class, Audi A3, Porsche Cayenne, Aston Martin DBX and more."
   navDark={true}
 >
+  <WebPageStructuredData
+    slot="structured-data"
+    title="Our Fleet | ICC Taxi Claims"
+    description="Explore ICC Taxi Claims' full fleet — taxi, private car, and exotic hire vehicles. Toyota Prius, Mercedes E-Class, Audi A3, Porsche Cayenne, Aston Martin DBX and more."
+  />
+  <Breadcrumbs slot="structured-data" />
   <PageHeader title="Our Fleet" highlight="Fleet" bgImage={heroBg.src} />
 
   <section class="py-12 md:py-28">

@@ -6,6 +6,10 @@ import compress from "@playform/compress";
 import AutoImport from "astro-auto-import";
 import icon from "astro-icon";
 import react from "@astrojs/react";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.icctaxiclaims.co.uk",
@@ -50,4 +54,4 @@ export default defineConfig({
       assetsInlineLimit: 0,
     },
   },
-});
+});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

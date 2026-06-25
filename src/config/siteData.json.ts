@@ -20,8 +20,8 @@ const siteData: SiteDataProps = {
   },
 
   defaultImage: {
-    src: "/images/cosmic-themes-logo.jpg",
-    alt: "ICC Taxi Claims logo",
+    src: "/images/og.jpg",
+    alt: "ICC Taxi Claims",
   },
 };
 
